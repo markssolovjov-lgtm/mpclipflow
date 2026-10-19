@@ -1,0 +1,29 @@
+{
+  "name": "mp-clipflow",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MP ClipFlow — платформа автоматизации TikTok-контента с рекламными баннерами. Created by MP Production.",
+  "author": "MP Production",
+  "workspaces": [
+    "packages/shared",
+    "apps/server",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @clipflow/server & npm run dev -w @clipflow/web",
+    "dev:server": "npm run dev -w @clipflow/server",
+    "dev:web": "npm run dev -w @clipflow/web",
+    "build": "npm run build -w @clipflow/web && npm run build -w @clipflow/server",
+    "start": "npm run start -w @clipflow/server",
+    "start:worker": "npm run start:worker -w @clipflow/server",
+    "db:up": "docker compose up -d postgres",
+    "db:migrate": "npm run db:migrate -w @clipflow/server",
+    "db:deploy": "npm run db:deploy -w @clipflow/server",
+    "test": "npm run test -w @clipflow/shared && npm run test -w @clipflow/server",
+    "typecheck": "npm run typecheck -w @clipflow/shared && npm run typecheck -w @clipflow/server && npm run typecheck -w @clipflow/web",
+    "db:local": "node scripts/local-db.mjs"
+  },
+  "engines": {
+    "node": ">=20.10"
+  }
+}
